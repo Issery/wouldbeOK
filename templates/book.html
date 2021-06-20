@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<form action={{url_for("search")}} method="post">
+    {{ form.Attribute.label }}{{ form.Attribute }}<br>
+    {{ form.cpr.label }} {{ form.cpr }} {{ form.attr_value.label }} {{ form.attr_value }}
+    {{ form.submit }}<br>
+</form>
+
+<hr>
+<table border="1">
+    <tr>
+        {% for attr in df.columns %}
+            <td>{{attr}}</td>
+        {% endfor %}
+    </tr>>
+    <tr>
+        {% for person in people %}
+        <tr>
+            <td>{{ person.name }}<a href="{{ url_for("delete_person",person_id=person.id) }}"> Delete</a></td>
+            <td>{{person.state}}</td>
+            <td>{{person.salary}}</td>
+            <td>{{person.grade}}</td>
+            <td>{{person.room}}</td>
+            <td>{{person.telnum}}</td>
+            <td>{{person.picture}}</td>
+            <td>{{person.keywords}}</td>
+        </tr>
+        {% endfor %}
+    </tr>
+</table> <br>
+
+<form action={{url_for("update")}} method="post">
+    {{ form2.name.label }}{{ form2.name }}<br>
+    {{ form2.attr.label }} {{ form2.attr }} {{ form2.value.label }} {{ form2.value }}
+    {{ form2.submit }}<br>
+</form>
+
+</body>
+</html>

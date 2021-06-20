@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <hr>
+    <table border="1">
+        <tr>
+            {% for attr in df.columns %}
+                <td>{{attr}}</td>
+            {% endfor %}
+        </tr>>
+        <tr>
+            {% for person in people %}
+            <tr>
+                <td>{{ person.name }}</td>
+                <td>{{person.state}}</td>
+                <td>{{person.salary}}</td>
+                <td>{{person.grade}}</td>
+                <td>{{person.room}}</td>
+                <td>{{person.telnum}}</td>
+                <td>{{person.picture}}</td>
+                <td>{{person.keywords}}</td>
+            </tr>
+            {% endfor %}
+        </tr>
+    </table>
+</body>
+</html>

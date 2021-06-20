@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<form action={{url_for("search")}} method="post">
+    {{ form.Attribute.label }}{{ form.Attribute }}<br>
+    {{ form.cpr.label }} {{ form.cpr }} {{ form.attr_value.label }} {{ form.attr_value }}
+    {{ form.submit }}<br>
+</form>
+
+<hr>
+<form action={{url_for("index")}} method="post">
+    <table border="1">
+    <tr>
+        {% for attr in df.columns %}
+            <td>{{attr}}</td>
+        {% endfor %}
+    </tr>>
+    <tr>
+        {% for person in people %}
+        <tr>
+        <td>
+            <input type="botton" value={{ person.name }}/>
+            <a href="{{ url_for("delete_person",person_id=person.id) }}"> Delete</a>
+        </td>
+        <td><input type="botton" value={{ person.state }} style="width:30px;"/></td>
+        <td><input type="botton" value={{ person.salary }} style="width:30px;"/></td>
+        <td><input type="botton" value={{ person.grade }} style="width:30px;"/></td>
+        <td><input type="botton" value={{ person.room }} style="width:30px;"/></td>
+        <td><input type="botton" value={{ person.telnum }} style="width:30px;"/></td>
+        <td>{{ person.picture }}</td>
+        <td><input type="botton" onclick="{{url_for('index')}}" value={{ person.keywords }} /></td>
+        </tr>
+        {% endfor %}
+    </tr>
+</table>
+</form>
+
+<!--onclick="JavaScript:window.location.href='test.html'" -->
+<!--    {% for row in range(10) %}-->
+<!--        {% for attr in df.columns %} <p>{{ df[attr][row]}}</p>{% endfor %}-->
+<!--    {% endfor %}-->
+</body>
+</html>
